@@ -1,0 +1,13 @@
+git init	创建代码仓库
+git config --global suer.name "guFeng"		//配置用户名
+git config --global suer.email "gufeng_xx@163.com"	//配置邮箱
+
+git add ./text.html	//指定放到文件门口
+git commit -m "添加说明"
+
+git add ./		//所有修改的文件放到门口
+git commit -m "所有东西说明"	//提交所有文件
+
+git log 	//查看日志
+git log --oneline //简洁版日志
+

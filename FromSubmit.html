@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo">
+        <!-- @submit.prevent 当前阻止时间默认行为,当前阻止action行为 -->
+        <form action="#" @submit.prevent="submitForm">
+            姓名(文本): <input type="text" v-model="name">
+            <br><br>
+            性别(单选按钮): <input type="radio" name="sex" value="1" v-model="sex">男
+            <br>
+            性别(单选按钮): <input type="radio" name="sex" value="0" v-model="sex">女
+            <br><br>
+            技能(多选框):
+                <input type="checkbox" name="skills" value="java" v-model="skills">java开发
+                <input type="checkbox" name="skills" value="javaScript" v-model="skills">javaScript开发
+                <input type="checkbox" name="skills" value="python" v-model="skills">python开发
+            <br><br>
+            城市(下拉框):
+                <select name="city">
+                    <option v-for="c of citys" value="c.code">{{ c.name }}</option>
+                </select>
+                <br><br>
+            说明(多行文本):
+            <br>
+                <textarea cols="30" rows="10" v-model="desc"></textarea>
+                <br>
+                <button type="submit">提交</button>
+        </form>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#demo',
+            data: {
+                name: '向星',
+                sex: '1',   //默认男
+                skills: ['python', 'java'],
+                citys: [
+                    {code: 'bj', name: '北京'},
+                    {code: 'sh', name: '上海'},
+                    {code: 'gz', name: '广州'}
+                ],
+                city: 'sh',
+                desc: ''
+            },
+            methods: {
+                submitForm: function() {
+                    //发送ajax请求,异步处理
+                    console.log(this.name + ',' + this.sex + ',' + this.skills + ',' + this.city + ',' + this.desc);
+                }
+            }
+        })
+    </script>
+</body>
+</html>
